@@ -1,40 +1,384 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Betina Sarraude | Landing Personal</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Betina Sarraude — Recorrido profesional</title>
+<style>
+:root { color-scheme: light; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: #f4f6f8;
+  color: #1f2a37;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 0 20px 80px; }
+
+/* ---------- Header ---------- */
+.hero {
+  background: linear-gradient(135deg, #0a0e17 0%, #14203a 55%, #1f3a5f 100%);
+  color: #fff;
+  border-radius: 0 0 28px 28px;
+  padding: 54px 40px 46px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(10,14,23,0.3);
+}
+.avatar {
+  width: 104px; height: 104px; border-radius: 50%;
+  background: #fff; color: #14203a;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 40px; font-weight: 700; letter-spacing: 1px;
+  margin: 0 auto 20px; box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+}
+.hero h1 { font-size: 34px; font-weight: 700; letter-spacing: -0.5px; }
+.hero .role { font-size: 17px; font-weight: 500; opacity: 0.95; margin-top: 6px; }
+.hero .meta { font-size: 14px; opacity: 0.85; margin-top: 14px; }
+.hero .meta a { color: #fff; text-decoration: underline; text-underline-offset: 2px; }
+.hero .intro {
+  max-width: 620px; margin: 20px auto 0; font-size: 14.5px;
+  opacity: 0.92; line-height: 1.6;
+}
+
+/* ---------- Legend ---------- */
+.legend {
+  display: flex; flex-wrap: wrap; gap: 18px; justify-content: center;
+  margin: 30px 0 10px; font-size: 13px; color: #52606d;
+}
+.legend span { display: inline-flex; align-items: center; gap: 7px; }
+.dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+.dot.pro { background: #14203a; }
+.dot.edu { background: #3e5c76; }
+.dot.doc { background: #6b7a8f; }
+
+/* ---------- Timeline ---------- */
+.timeline { position: relative; margin-top: 34px; padding-left: 8px; }
+.timeline::before {
+  content: ""; position: absolute; left: 27px; top: 6px; bottom: 6px;
+  width: 3px; background: linear-gradient(#14203a, #3e5c76); border-radius: 2px;
+}
+.entry { position: relative; padding: 0 0 26px 74px; }
+.entry .node {
+  position: absolute; left: 8px; top: 2px;
+  width: 40px; height: 40px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700; color: #fff;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.18); border: 3px solid #f4f6f8; z-index: 2;
+}
+.node.pro { background: #14203a; }
+.node.edu { background: #3e5c76; }
+.node.doc { background: #6b7a8f; }
+
+.card {
+  background: #fff; border-radius: 14px; padding: 18px 20px;
+  box-shadow: 0 2px 10px rgba(31,42,55,0.07);
+  border: 1px solid #eef1f4;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.card:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(31,42,55,0.12); }
+.card .date {
+  display: inline-block; font-size: 12px; font-weight: 600;
+  color: #14203a; background: #e8ebf1; padding: 3px 10px; border-radius: 20px;
+  margin-bottom: 8px;
+}
+.card.eduTag .date { color: #3e5c76; background: #e9eef4; }
+.card.docTag .date { color: #55637a; background: #eef0f4; }
+.card h3 { font-size: 17px; font-weight: 700; color: #14213d; }
+.card .org { font-size: 14.5px; font-weight: 600; color: #52606d; margin: 2px 0 8px; }
+.card p { font-size: 14px; color: #52606d; }
+.brands { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 8px; }
+.brand {
+  font-size: 12.5px; font-weight: 600; color: #14203a;
+  background: #eaedf3; border: 1px solid #c8d0de;
+  padding: 5px 12px; border-radius: 8px; text-decoration: none;
+  transition: all 0.15s ease;
+}
+.brand.link { padding-right: 26px; position: relative; }
+.brand.link::after {
+  content: "↗"; position: absolute; right: 9px; top: 50%;
+  transform: translateY(-50%); font-size: 11px; opacity: 0.6;
+}
+.brand.link:hover {
+  background: #14203a; color: #fff; border-color: #14203a;
+  box-shadow: 0 3px 8px rgba(20,32,58,0.35);
+}
+.brand.link:hover::after { opacity: 1; }
+.brands-label { font-size: 11.5px; font-weight: 700; color: #8a97a5; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 14px; display:block; }
+.hl { color: #1d3557; font-weight: 600; }
+.cta-note { font-size: 11.5px; color: #8a97a5; margin-top: 8px; font-style: italic; }
+
+/* ---------- Skills / footer ---------- */
+.section { margin-top: 46px; }
+.section h2 { font-size: 20px; color: #14213d; margin-bottom: 16px; text-align: center; }
+.chips { display: flex; flex-wrap: wrap; gap: 9px; justify-content: center; }
+.chip {
+  font-size: 13px; font-weight: 500; color: #14203a;
+  background: #fff; border: 1.5px solid #c8d0de;
+  padding: 7px 14px; border-radius: 22px;
+}
+.tools { margin-top: 18px; text-align: center; font-size: 13.5px; color: #52606d; }
+.foot { margin-top: 50px; text-align: center; font-size: 13px; color: #8a97a5; }
+.foot a { color: #14203a; font-weight: 600; text-decoration: none; }
+
+@media (max-width: 560px) {
+  .hero { padding: 40px 22px 36px; }
+  .hero h1 { font-size: 27px; }
+  .entry { padding-left: 60px; }
+  .timeline::before { left: 21px; }
+  .entry .node { width: 34px; height: 34px; left: 6px; font-size: 11px; }
+}
+</style>
 </head>
 <body>
-  <main class="container fade-in">
-    <img src="https://media.licdn.com/dms/image/v2/D4D03AQE6DQMQkcUR7g/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1678382388809?e=1761782400&v=beta&t=tEqRf965X91hzKayxC8PywuDQNFgt28BEP4hCQ_qjU4" alt="Foto de Betina Sarraude" class="profile-pic">
-    <h1>Betina Sarraude</h1>
-    <p class="description">easycommerce® Service Delivery Manager</p>
-    <div class="social-icons">
-      <a href="https://www.linkedin.com/in/betinasarraude/" target="_blank" rel="noopener" aria-label="LinkedIn">
-  <svg width="48" height="48" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="16" cy="16" r="16" fill="#0077B5"/><path d="M12.36 24V13.6h-3.12V24h3.12zm-1.56-11.76c1 0 1.8-.8 1.8-1.8s-.8-1.8-1.8-1.8-1.8.8-1.8 1.8.8 1.8 1.8 1.8zm4.68 11.76h3.12v-5.68c0-1.36.24-2.72 1.96-2.72 1.7 0 1.72 1.52 1.72 2.8V24h3.12v-6.08c0-3.04-1.62-4.44-3.78-4.44-1.74 0-2.52.96-2.96 1.64v-1.4h-3.12c.04.92 0 10.88 0 10.88z" fill="#fff"/></svg>
-      </a>
-      <a href="https://wa.me/5492245425014" target="_blank" rel="noopener" aria-label="WhatsApp">
-  <svg width="48" height="48" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="16" cy="16" r="16" fill="#25D366"/><path d="M23.6 20.6c-.36-.18-2.14-1.06-2.47-1.18-.33-.12-.57-.18-.81.18-.24.36-.93 1.18-1.14 1.43-.21.24-.42.27-.78.09-.36-.18-1.52-.56-2.89-1.78-1.07-.95-1.8-2.12-2.01-2.48-.21-.36-.02-.56.16-.74.16-.16.36-.42.54-.63.18-.21.24-.36.36-.6.12-.24.06-.45-.03-.63-.09-.18-.81-1.95-1.11-2.67-.29-.7-.59-.6-.81-.61-.21-.01-.45-.01-.69-.01-.24 0-.63.09-.96.45-.33.36-1.26 1.23-1.26 3 .01 1.77 1.29 3.49 1.47 3.73.18.24 2.53 3.87 6.13 4.13.86.06 1.53-.14 2.04-.32.51-.18 1.62-.63 1.85-1.24.23-.61.23-1.13.16-1.24-.07-.11-.33-.18-.69-.36z" fill="#fff"/></svg>
-      </a>
-      <!-- <a href="https://www.instagram.com/nicogamba93" target="_blank" rel="noopener" aria-label="Instagram">
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="16" cy="16" r="16" fill="#E1306C"/><path d="M20.8 10.4h-9.6A.8.8 0 0010.4 11.2v9.6c0 .44.36.8.8.8h9.6c.44 0 .8-.36.8-.8v-9.6a.8.8 0 00-.8-.8zm-4.8 2.4a3.2 3.2 0 110 6.4 3.2 3.2 0 010-6.4zm4.16.48a.72.72 0 11-1.44 0 .72.72 0 011.44 0zm-4.16 1.12a2.08 2.08 0 100 4.16 2.08 2.08 0 000-4.16z" fill="#fff"/></svg>
-      </a> -->
-    </div>
-      <div class="easycommerce-link">
-        <a href="https://www.easycommerce.tech/home" target="_blank" rel="noopener" class="conocenos-btn">
-          <img src="https://www.easycommerce.tech/wp-content/themes/easycommerce/img/logo.svg" alt="EasyCommerce Logo" class="easycommerce-logo">
-          Contáctanos
-        </a>
+<div class="hero">
+  <div class="avatar">BS</div>
+  <h1>Betina Sarraude</h1>
+  <div class="role">Customer Success &amp; Service Delivery Manager · Project Management · E-commerce</div>
+  <div class="meta">Dolores, Buenos Aires, Argentina&nbsp; ·&nbsp; <a href="https://linkedin.com/in/betinasarraude" target="_blank" rel="noopener">linkedin.com/in/betinasarraude</a></div>
+  <p class="intro">Licenciada en Comunicación con más de 10 años de experiencia en gestión de cuentas, Customer Success y liderazgo de equipos. Especialista en construir relaciones de confianza con clientes, asegurar su retención y crecimiento, y coordinar equipos multidisciplinarios con foco en resultados y calidad.</p>
+</div>
+
+<div class="wrap">
+  <div class="legend">
+    <span><i class="dot pro"></i> Experiencia profesional</span>
+    <span><i class="dot doc"></i> Docencia</span>
+    <span><i class="dot edu"></i> Formación académica</span>
+  </div>
+
+  <div class="timeline">
+
+    <!-- Orbix Co-Founder -->
+    <div class="entry">
+      <div class="node pro">OX</div>
+      <div class="card">
+        <span class="date">jul. 2026 – actualidad</span>
+        <h3>Co-Founder</h3>
+        <div class="org"><a href="https://orbix-it.com/" target="_blank" rel="noopener" style="color:inherit; text-decoration:underline; text-underline-offset:2px;">Orbix</a></div>
+        <p>Proyecto propio. Lidero las áreas de <span class="hl">Marketing</span>, <span class="hl">Diseño</span>, <span class="hl">Onboarding de clientes</span> y <span class="hl">prospección comercial</span>, construyendo la propuesta desde cero y acompañando a los primeros clientes.</p>
       </div>
-  </main>
-  <footer>
-    <p>© 2025 Betina Sarraude. Todos los derechos reservados.</p>
-    <p><a href="mailto:bsarraude@easycommerce.tech">bsarraude@easycommerce.tech</a></p>
-  </footer>
+    </div>
+
+    <!-- easycommerce actual -->
+    <div class="entry">
+      <div class="node pro">EC</div>
+      <div class="card">
+        <span class="date">jul. 2023 – actualidad</span>
+        <h3>Service Delivery &amp; Project Manager</h3>
+        <div class="org">easycommerce®</div>
+        <p>Lidero la <span class="hl">implementación de proyectos de e-commerce de punta a punta, desde cero</span>: relevamiento y <span class="hl">propuesta comercial</span>, gestión del <span class="hl">backlog</span> y los <span class="hl">sprints</span> junto al equipo técnico, <span class="hl">lanzamiento y post-lanzamiento</span>. Soy el <span class="hl">punto de contacto permanente con el cliente</span> y coordino las áreas de <span class="hl">Customer Success, Marketing, QA y Soporte</span>, asegurando la adopción, la calidad del servicio y la satisfacción a lo largo de todo el ciclo. Incorporo herramientas de <span class="hl">IA</span> para optimizar procesos.</p>
+        <span class="brands-label">Proyectos &amp; marcas implementadas</span>
+        <div class="brands">
+          <a class="brand link" href="https://www.easycommerce.tech/casos/converse/" target="_blank" rel="noopener">Converse</a>
+          <a class="brand link" href="https://www.easycommerce.tech/casos/promesse/" target="_blank" rel="noopener">Promesse</a>
+          <a class="brand link" href="https://www.easycommerce.tech/casos/las-oreiro/" target="_blank" rel="noopener">Las Oreiro</a>
+          <a class="brand link" href="https://www.easycommerce.tech/casos/delsey/" target="_blank" rel="noopener">Delsey Argentina</a>
+          <a class="brand link" href="https://www.easycommerce.tech/casos/rheem/" target="_blank" rel="noopener">Rheem</a>
+          <a class="brand link" href="https://www.easycommerce.tech/casos/cornilleau-argentina/" target="_blank" rel="noopener">Cornilleau</a>
+          <a class="brand link" href="https://www.easycommerce.tech/casos/elden/" target="_blank" rel="noopener">Elden</a>
+          <a class="brand link" href="https://www.easycommerce.tech/casos/iba/" target="_blank" rel="noopener">IBA</a>
+          <a class="brand link" href="https://www.easycommerce.tech/casos/mamy-blue/" target="_blank" rel="noopener">Mamy Blue</a>
+          <a class="brand link" href="https://www.easycommerce.tech/casos/club-argentino/" target="_blank" rel="noopener">Club Argentino</a>
+          <a class="brand link" href="https://www.easycommerce.tech/casos/gummi/" target="_blank" rel="noopener">Gummi</a>
+          <a class="brand link" href="https://www.easycommerce.tech/casos/forever-bikes/" target="_blank" rel="noopener">Forever Bikes</a>
+          <a class="brand link" href="https://www.easycommerce.tech/casos/maxifarma/" target="_blank" rel="noopener">Maxifarma</a>
+          <a class="brand link" href="https://www.easycommerce.tech/casos/grupolauma/" target="_blank" rel="noopener">Grupo Lauma</a>
+          <a class="brand link" href="https://www.easycommerce.tech/casos/vinals-wine-food/" target="_blank" rel="noopener">Viñals Wine &amp; Food</a>
+          <a class="brand link" href="https://www.easycommerce.tech/casos/familia-mastrantonio/" target="_blank" rel="noopener">Familia Mastrantonio</a>
+          <a class="brand link" href="https://www.easycommerce.tech/casos/estancia-rafaela/" target="_blank" rel="noopener">Estancia Rafaela</a>
+          <a class="brand link" href="https://www.easycommerce.tech/casos/buenos-vinos/" target="_blank" rel="noopener">Buenos Vinos</a>
+          <a class="brand link" href="https://www.easycommerce.tech/casos/ledevit/" target="_blank" rel="noopener">Ledevit</a>
+          <a class="brand link" href="https://www.easycommerce.tech/casos/jugueteria-del-tomate/" target="_blank" rel="noopener">Juguetería del Tomate</a>
+          <a class="brand link" href="https://www.easycommerce.tech/casos/belpe/" target="_blank" rel="noopener">Belpe</a>
+          <a class="brand link" href="https://www.easycommerce.tech/casos/deblasis-bazar-gastronomico/" target="_blank" rel="noopener">Deblasis</a>
+          <a class="brand link" href="https://www.easycommerce.tech/casos/sexpert/" target="_blank" rel="noopener">Sexpert</a>
+          <a class="brand link" href="https://www.easycommerce.tech/casos/7-pecados/" target="_blank" rel="noopener">7 Pecados</a>
+          <a class="brand link" href="https://www.easycommerce.tech/casos/ensalud/" target="_blank" rel="noopener">Ensalud</a>
+        </div>
+        <p class="cta-note">Hacé clic en cada marca para ver el caso de éxito publicado ↗</p>
+      </div>
+    </div>
+
+    <!-- Docencia universitaria -->
+    <div class="entry">
+      <div class="node doc">UA</div>
+      <div class="card docTag">
+        <span class="date">2024 – 2025</span>
+        <h3>Docente universitaria — JTP Psicología Social</h3>
+        <div class="org">Universidad Atlántida Argentina</div>
+        <p>Docencia en nivel universitario, complementando una trayectoria docente sostenida en educación superior desde 2016.</p>
+      </div>
+    </div>
+
+    <!-- easycommerce content creator -->
+    <div class="entry">
+      <div class="node pro">EC</div>
+      <div class="card">
+        <span class="date">feb. 2021 – jul. 2023</span>
+        <h3>Content Creator</h3>
+        <div class="org">easycommerce®</div>
+        <p>Creación y gestión de contenido digital para la plataforma y sus clientes: piezas para redes sociales, comunicaciones institucionales y materiales comerciales.</p>
+      </div>
+    </div>
+
+    <!-- Municipalidad de Dolores -->
+    <div class="entry">
+      <div class="node pro">MD</div>
+      <div class="card">
+        <span class="date">2019 – 2023</span>
+        <h3>Estrategia y Comunicación Digital</h3>
+        <div class="org">Municipalidad de Dolores</div>
+        <p>Diseño y ejecución de la estrategia de comunicación digital del municipio: gestión de canales institucionales, campañas de difusión y contenido para la comunidad.</p>
+      </div>
+    </div>
+
+    <!-- LACICLA -->
+    <div class="entry">
+      <div class="node pro">LC</div>
+      <div class="card">
+        <span class="date">jun. 2016 – jul. 2022</span>
+        <h3>Account Manager / Social Media Manager</h3>
+        <div class="org">LACICLA</div>
+        <p><span class="hl">Gestión integral de cuentas de alto volumen</span> para agencia de comunicación digital, construyendo <span class="hl">relaciones de confianza a largo plazo</span> con <span class="hl">marcas líderes de Argentina y LATAM</span> y <span class="hl">coordinando equipos multidisciplinarios</span> en la ejecución de campañas.</p>
+        <span class="brands-label">Marcas</span>
+        <div class="brands">
+          <span class="brand">Philips Lighting</span>
+          <span class="brand">Asics</span>
+          <span class="brand">Renault</span>
+          <span class="brand">Jumbo / Disco / Vea</span>
+          <span class="brand">Citroën DS</span>
+          <span class="brand">Nestlé Chile</span>
+          <span class="brand">Bimbo</span>
+          <span class="brand">WeWork</span>
+          <span class="brand">Clorox LATAM</span>
+          <span class="brand">Poett LATAM</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Wiper -->
+    <div class="entry">
+      <div class="node pro">WA</div>
+      <div class="card">
+        <span class="date">jul. 2016 – ago. 2018</span>
+        <h3>Content Creator — Generación de Contenido</h3>
+        <div class="org">Wiper Agency</div>
+        <p>Producción de contenido para redes sociales y email marketing.</p>
+        <span class="brands-label">Marcas</span>
+        <div class="brands">
+          <span class="brand">Shopping Cencosud</span>
+          <span class="brand">Fiber One (LATAM)</span>
+          <span class="brand">Betty Crocker (MX/CL)</span>
+          <span class="brand">Häagen-Dazs (MX)</span>
+          <span class="brand">Acer (LATAM)</span>
+          <span class="brand">Essen</span>
+          <span class="brand">Shopping Palmas</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- So Connect -->
+    <div class="entry">
+      <div class="node pro">SC</div>
+      <div class="card">
+        <span class="date">jul. 2016 – dic. 2016</span>
+        <h3>Community Manager (Freelance)</h3>
+        <div class="org">So Connect</div>
+        <p>Gestión de contenidos y moderación en redes. Cuenta: Instituto Viviana D'Arrigo.</p>
+      </div>
+    </div>
+
+    <!-- Wonoma -->
+    <div class="entry">
+      <div class="node pro">WO</div>
+      <div class="card">
+        <span class="date">may. 2015 – may. 2016</span>
+        <h3>Social Media Manager / Community Manager</h3>
+        <div class="org">Wonoma</div>
+        <p>Gestión de contenidos y comunidad en Facebook, Twitter e Instagram. Implementación de pauta en Facebook Ads.</p>
+      </div>
+    </div>
+
+    <!-- Havas -->
+    <div class="entry">
+      <div class="node pro">HM</div>
+      <div class="card">
+        <span class="date">feb. 2014 – mar. 2016</span>
+        <h3>Community Manager / Redactora</h3>
+        <div class="org">Havas Media</div>
+        <p>Gestión de redes sociales para marcas de retail y hogar. Producción de contenido, moderación y reportes.</p>
+        <span class="brands-label">Marcas</span>
+        <div class="brands">
+          <span class="brand">Starbucks</span>
+          <span class="brand">La Salteña</span>
+          <span class="brand">Easy</span>
+          <span class="brand">Blaisten</span>
+          <span class="brand">Jumbo</span>
+          <span class="brand">Disco</span>
+          <span class="brand">Air New Zealand</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Docencia superior larga -->
+    <div class="entry">
+      <div class="node doc">IS</div>
+      <div class="card docTag">
+        <span class="date">2016 – 2026</span>
+        <h3>Docente de nivel superior</h3>
+        <div class="org">ISFDyT N°26 · Instituto Parroquial F. de P. Robles · CIPE (DGCyE)</div>
+        <p>Trayectoria docente sostenida en comunicación, cultura y sociedad, y coordinación de políticas estudiantiles en la Provincia de Buenos Aires.</p>
+      </div>
+    </div>
+
+    <!-- Título -->
+    <div class="entry">
+      <div class="node edu">🎓</div>
+      <div class="card eduTag">
+        <span class="date">2016</span>
+        <h3>Lic. en Comunicación Social y Planificación Institucional</h3>
+        <div class="org">FPyCS — Universidad Nacional de La Plata (UNLP)</div>
+        <p>Título de grado. Complementado con Postítulo de Formación Docente (Res. 924/16, DGCyE, 2021).</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Formación complementaria -->
+  <div class="section">
+    <h2>Formación complementaria</h2>
+    <div class="chips">
+      <span class="chip">Gestión de Proyectos &amp; Agile — Santander Open Academy (2026)</span>
+      <span class="chip">Product Management</span>
+      <span class="chip">Metodología Scrum — Edutin Academy</span>
+      <span class="chip">Gestión de Proyectos — Udemy</span>
+      <span class="chip">Liderazgo en entornos digitales — Santander</span>
+      <span class="chip">Business English — Santander</span>
+    </div>
+  </div>
+
+  <!-- Skills -->
+  <div class="section">
+    <h2>Áreas de expertise</h2>
+    <div class="chips">
+      <span class="chip">Customer Success</span>
+      <span class="chip">Gestión de cuentas</span>
+      <span class="chip">Project Management</span>
+      <span class="chip">Service Delivery</span>
+      <span class="chip">Liderazgo de equipos</span>
+      <span class="chip">E-commerce</span>
+      <span class="chip">Metodologías Ágiles / Scrum</span>
+      <span class="chip">Retención &amp; Onboarding</span>
+      <span class="chip">Análisis &amp; Reporting</span>
+      <span class="chip">Email Marketing</span>
+      <span class="chip">Estrategia Digital</span>
+    </div>
+    <p class="tools">🛠️ Herramientas: Asana · Trello · HubSpot · Claude · ChatGPT · Gemini · Canva &nbsp;|&nbsp; 🗣️ Español (nativo) · Inglés (escrito profesional, conversacional en mejora)</p>
+  </div>
+
+  <div class="foot">
+    Recorrido profesional y académico &nbsp;·&nbsp; <a href="https://linkedin.com/in/betinasarraude" target="_blank" rel="noopener">Ver perfil completo en LinkedIn →</a>
+  </div>
+</div>
 </body>
 </html>
